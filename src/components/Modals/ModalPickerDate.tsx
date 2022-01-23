@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useMemo, useState} from "react";
-import {StyleSheet, View} from "react-native";
-import {Selectors} from "../../redux/selectors/selectors";
-import ModalWrapper from "./ModalWrapper";
-import FlatListChooser from "../FlatListChooser";
-import {IFlatListChooser} from "../../types/types";
-import {useNavigation} from "@react-navigation/native";
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {setDateAction} from "../../redux/actions/creators/controllerEventActionCreators";
-import moment from "moment";
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {Selectors} from '../../redux/selectors/selectors';
+import ModalWrapper from './ModalWrapper';
+import FlatListChooser from '../FlatListChooser';
+import {IFlatListChooser} from '../../types/types';
+import {useNavigation} from '@react-navigation/native';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setDateAction} from '../../redux/actions/creators/controllerEventActionCreators';
+import moment from 'moment';
 
 const DEFAULT_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const IN_LEAP_DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -21,7 +21,7 @@ function ModalPickerDate() {
 
   const months = useAppSelector(Selectors.getMonths);
 
-  const date = useAppSelector(state => state.event.date);
+  const date = useAppSelector(Selectors.getDate);
 
   const [countDays, setCountDays] = useState<number[]>([]);
 
@@ -106,7 +106,7 @@ function ModalPickerDate() {
         .year(yearSelect)
         .toDate();
 
-      dispatch(setDateAction(newDate));
+      dispatch(setDateAction(newDate.getTime()));
     }
 
     navigation.goBack();
@@ -191,7 +191,7 @@ export default React.memo(ModalPickerDate);
 const styles = StyleSheet.create({
   container: {},
   lists: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 30,
   },
 });

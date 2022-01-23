@@ -1,13 +1,13 @@
-import {IAction, IVariant} from "../../../types/types";
-import { TEventState } from "../../reducers/controllerEventReducer";
-import Actions from "../types/controllerEventActionTypes";
+import {IAction, IVariant} from '../../../types/types';
+import {TEventState} from '../../reducers/controllerEventReducer';
+import Actions from '../types/controllerEventActionTypes';
 
 export const setInitEventAction = (data: TEventState): IAction => ({
   type: Actions.INIT_STATE,
   payload: {data},
 });
 
-export const setDateAction = (data: Date): IAction => ({
+export const setDateAction = (data: number): IAction => ({
   type: Actions.SET_DATE,
   payload: {data},
 });

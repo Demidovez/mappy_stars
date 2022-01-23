@@ -1,12 +1,13 @@
-import React, {useCallback, useEffect, useMemo, useState} from "react";
-import {StyleSheet, Text, View} from "react-native";
-import ModalWrapper from "./ModalWrapper";
-import FlatListChooser from "../FlatListChooser";
-import {IFlatListChooser} from "../../types/types";
-import {useNavigation} from "@react-navigation/native";
-import moment from "moment";
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {setDateAction} from "../../redux/actions/creators/controllerEventActionCreators";
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import ModalWrapper from './ModalWrapper';
+import FlatListChooser from '../FlatListChooser';
+import {IFlatListChooser} from '../../types/types';
+import {useNavigation} from '@react-navigation/native';
+import moment from 'moment';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setDateAction} from '../../redux/actions/creators/controllerEventActionCreators';
+import {Selectors} from '../../redux/selectors/selectors';
 
 const generateListData = (length: number): IFlatListChooser[] =>
   Array(length)
@@ -14,14 +15,14 @@ const generateListData = (length: number): IFlatListChooser[] =>
     .map((_, index) => ({
       id: index,
       value: index,
-      label: index < 10 ? "0" + index : "" + index,
+      label: index < 10 ? '0' + index : '' + index,
     }));
 
 function ModalPickerTime() {
   // console.log("ModalPickerTime");
 
   const dispatch = useAppDispatch();
-  const date = useAppSelector(state => state.event.date);
+  const date = useAppSelector(Selectors.getDate);
 
   const navigation = useNavigation();
 
@@ -56,7 +57,7 @@ function ModalPickerTime() {
         .minute(minuteSelect)
         .toDate();
 
-      dispatch(setDateAction(newDate));
+      dispatch(setDateAction(newDate.getTime()));
     }
     navigation.goBack();
   }, [hourSelect, minuteSelect, date]);
@@ -121,12 +122,12 @@ export default React.memo(ModalPickerTime);
 const styles = StyleSheet.create({
   container: {},
   lists: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 30,
-    alignItems: "center",
+    alignItems: 'center',
   },
   separator: {
     marginHorizontal: 10,
-    color: "#4a5660",
+    color: '#4a5660',
   },
 });

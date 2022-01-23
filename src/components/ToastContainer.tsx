@@ -1,11 +1,11 @@
-import React, {useEffect, useRef} from "react";
-import {Text, StyleSheet, View, TouchableWithoutFeedback} from "react-native";
-import Toast, {BaseToastProps} from "react-native-toast-message";
-import Style from "../style/Light";
-import SvgImage from "./SvgImage";
-import LottieView from "lottie-react-native";
-import {useAppDispatch, useAppSelector} from "../hooks";
-import {setToastResetAction} from "../redux/actions/creators/toastActionCreators";
+import React, {useEffect, useRef} from 'react';
+import {Text, StyleSheet, View, TouchableWithoutFeedback} from 'react-native';
+import Toast, {BaseToastProps} from 'react-native-toast-message';
+import Style from '../style/Light';
+import SvgImage from './SvgImage';
+import LottieView from 'lottie-react-native';
+import {useAppDispatch, useAppSelector} from '../hooks';
+import {setToastResetAction} from '../redux/actions/creators/toastActionCreators';
 
 function ToastContainer() {
   // console.log("ToastContainer");
@@ -40,7 +40,7 @@ function ToastContainer() {
       <View style={styles.container}>
         <View style={styles.icon}>
           <LottieView
-            source={require("../../assets/icons/success.json")}
+            source={require('../../assets/icons/success.json')}
             ref={lottieRef}
             loop={false}
             autoPlay={false}
@@ -53,7 +53,7 @@ function ToastContainer() {
           </View>
         </TouchableWithoutFeedback>
         {toast.onPress && (
-          <TouchableWithoutFeedback onPress={Toast.hide}>
+          <TouchableWithoutFeedback onPress={() => Toast.hide()}>
             <View style={styles.close}>
               <SvgImage width={20} height={20} name="close" />
             </View>
@@ -65,7 +65,7 @@ function ToastContainer() {
       <View style={styles.container}>
         <View style={styles.icon}>
           <LottieView
-            source={require("../../assets/icons/error.json")}
+            source={require('../../assets/icons/error.json')}
             ref={lottieRef}
             loop={false}
             autoPlay={false}
@@ -79,7 +79,8 @@ function ToastContainer() {
     ),
   };
 
-  return <Toast ref={ref => Toast.setRef(ref)} config={toastConfig} />;
+  // return <Toast ref={ref => Toast.setRef(ref)} config={toastConfig} />;
+  return <Toast config={toastConfig} />;
 }
 
 export default React.memo(ToastContainer);
@@ -87,15 +88,15 @@ export default React.memo(ToastContainer);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     marginTop: 30,
     height: 80,
     borderLeftWidth: 0,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 6,
-    width: "90%",
+    width: '90%',
     elevation: 5,
   },
   icon: {
@@ -110,21 +111,21 @@ const styles = StyleSheet.create({
   text1: {
     ...Style.font,
     fontSize: 16,
-    fontWeight: "400",
-    color: "#4a5660",
-    textAlign: "left",
+    fontWeight: '400',
+    color: '#4a5660',
+    textAlign: 'left',
   },
   text2: {
     ...Style.font,
     fontSize: 14,
-    fontWeight: "400",
-    color: "#A2A6AA",
-    textAlign: "left",
+    fontWeight: '400',
+    color: '#A2A6AA',
+    textAlign: 'left',
   },
   close: {
     width: 50,
     paddingVertical: 20,
     paddingHorizontal: 30,
-    alignItems: "center",
+    alignItems: 'center',
   },
 });

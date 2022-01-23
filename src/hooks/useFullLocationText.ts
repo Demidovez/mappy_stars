@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
-import {useAppSelector} from ".";
-import moment from "moment";
-import {formatingCoordinates} from "../helper";
+import {useEffect, useState} from 'react';
+import {useAppSelector} from '.';
+import moment from 'moment';
+import {formatingCoordinates} from '../helper';
+import {Selectors} from '../redux/selectors/selectors';
 
 // Определяем полный текст локации
 export default function useFullLocationText(): string {
@@ -17,22 +18,22 @@ export default function useFullLocationText(): string {
     state => state.event,
   );
 
-  const [resultText, setResultText] = useState("");
+  const [resultText, setResultText] = useState('');
 
   useEffect(() => {
     if (!isChangeTextLocation) {
       const lines = [];
       const dateFull = [];
 
-      hasDateLocation && dateFull.push(moment(date).format("LL"));
-      hasTimeLocation && dateFull.push(moment(date).format("LT"));
+      hasDateLocation && dateFull.push(moment(date).format('LL'));
+      hasTimeLocation && dateFull.push(moment(date).format('LT'));
 
-      (hasDateLocation || hasTimeLocation) && lines.push(dateFull.join(", "));
+      (hasDateLocation || hasTimeLocation) && lines.push(dateFull.join(', '));
       hasLocation && lines.push(location);
       hasCoordinates &&
         lines.push(formatingCoordinates([latitude, longtitude]));
 
-      setResultText(lines.join("\n"));
+      setResultText(lines.join('\n'));
     }
   }, [
     date,

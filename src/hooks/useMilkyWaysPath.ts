@@ -36,6 +36,8 @@ export default function useMilkyWaysPath(geoMapPath: Function): IMilkyData[] {
             const arreaBack =
               (boundBack[2] - boundBack[0]) * (boundBack[3] - boundBack[1]);
 
+            // TODO: Не работает, например при дате 23 сентября 2024 в 11:06, проверял в эмуляторе
+
             const isCorrect = arreaMW <= arreaBack;
 
             data.push({

@@ -1,5 +1,6 @@
-import {createSelector} from "reselect";
-import {RootState} from "../store";
+import {createSelector} from 'reselect';
+import {RootState} from '../store';
+import moment from 'moment';
 
 // TODO: Как-то много кода.....
 const getControllersSelect = (state: RootState) => state.data.controllers;
@@ -53,7 +54,7 @@ const getIsChangeTextLocationSelect = (state: RootState) =>
 const getStarDataSelect = (state: RootState) => state.stars;
 const getLatitudeSelect = (state: RootState) => state.event.latitude;
 const getLongitudeSelect = (state: RootState) => state.event.longtitude;
-const getDateSelect = (state: RootState) => state.event.date;
+const getDateSelect = (state: RootState) => moment(state.event.date).toDate();
 const getTextDescSelect = (state: RootState) => state.desc.textDesc;
 const getColorDescSelect = (state: RootState) => state.desc.colorDesc;
 const getSizeDescSelect = (state: RootState) => state.desc.sizeDesc;
@@ -401,6 +402,8 @@ const getAllOptions = createSelector(
   },
 );
 
+const getDate = createSelector([getDateSelect], date => date);
+
 // TODO: Все ли используются?
 export const Selectors = {
   getControllers,
@@ -428,4 +431,5 @@ export const Selectors = {
   getAllOptions,
   getHolst,
   getShape,
+  getDate,
 };

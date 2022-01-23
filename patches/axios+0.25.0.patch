@@ -1,0 +1,13 @@
+diff --git a/node_modules/axios/lib/adapters/xhr.js b/node_modules/axios/lib/adapters/xhr.js
+index 77246f8..3e38815 100644
+--- a/node_modules/axios/lib/adapters/xhr.js
++++ b/node_modules/axios/lib/adapters/xhr.js
+@@ -8,7 +8,7 @@ var buildFullPath = require('../core/buildFullPath');
+ var parseHeaders = require('./../helpers/parseHeaders');
+ var isURLSameOrigin = require('./../helpers/isURLSameOrigin');
+ var createError = require('../core/createError');
+-var defaults = require('../defaults');
++// var defaults = require('../defaults');
+ var Cancel = require('../cancel/Cancel');
+ 
+ module.exports = function xhrAdapter(config) {

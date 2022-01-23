@@ -1,19 +1,19 @@
-import React, {useCallback, useLayoutEffect, useMemo} from "react";
+import React, {useCallback, useLayoutEffect, useMemo} from 'react';
 import {
   TouchableWithoutFeedback,
   StyleSheet,
   Text,
   View,
   Image,
-} from "react-native";
-import moment from "moment";
-import "moment/min/locales";
-import Style from "../style/Light";
-import {useAppSelector} from "../hooks";
-import {Routes} from "../navigation/routes";
-import * as RootNavigation from "../navigation/rootNavigation";
-import {Selectors} from "../redux/selectors/selectors";
-import {ITemplate} from "../types/types";
+} from 'react-native';
+import moment from 'moment';
+import 'moment/min/locales';
+import Style from '../style/Light';
+import {useAppSelector} from '../hooks';
+import {Routes} from '../navigation/routes';
+import * as RootNavigation from '../navigation/rootNavigation';
+import {Selectors} from '../redux/selectors/selectors';
+import {ITemplate} from '../types/types';
 
 interface IProjectItem {
   item: ITemplate;
@@ -47,7 +47,7 @@ function ProjectItem({item, isFirstItem}: IProjectItem) {
         <View style={styles.leftSide}>
           {/* TODO: Низкое качество изображения */}
           <Image
-            source={{uri: "data:image/jpeg;base64," + item.image}}
+            source={{uri: 'data:image/jpeg;base64,' + item.image}}
             style={{
               height: item.imageSize[1] * 0.3,
               width: item.imageSize[0] * 0.3,
@@ -63,7 +63,7 @@ function ProjectItem({item, isFirstItem}: IProjectItem) {
               {item.desc || item.textDesc || item.about}
             </Text>
             <Text style={styles.location}>
-              {moment(item.date).format("LLL")}
+              {moment(item.date).format('LLL')}
             </Text>
             <Text style={styles.location}>{item.location}</Text>
           </View>
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     margin: 24,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   leftSide: {
     padding: 20,
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingLeft: 0,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   title: {
     ...Style.font,
-    fontFamily: "Nunito-SemiBold",
+    fontFamily: 'Nunito-SemiBold',
     fontSize: 17,
     paddingBottom: 7,
     marginTop: -5,

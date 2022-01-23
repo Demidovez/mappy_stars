@@ -1,10 +1,9 @@
-import moment from "moment";
-import {createObjByType} from "../../helper";
-import {EStatus, IAction, IVariant} from "../../types/types";
-import Actions from "../actions/types/controllerEventActionTypes";
+import {createObjByType} from '../../helper';
+import {EStatus, IAction, IVariant} from '../../types/types';
+import Actions from '../actions/types/controllerEventActionTypes';
 
 export type TEventState = {
-  date: Date;
+  date: number;
   location: string;
   latitude: number;
   longtitude: number;
@@ -14,8 +13,8 @@ export type TEventState = {
 
 const initialState: TEventState = {
   // date: moment("2021-11-20 10:05:00", "YYYY-MM-DD HH:mm:00").toDate(),
-  date: moment(new Date()).toDate(),
-  location: "",
+  date: new Date().getTime(),
+  location: '',
   latitude: 55.755825, // 55.755825
   longtitude: 37.617298, // 37.617298
   variants: [],
