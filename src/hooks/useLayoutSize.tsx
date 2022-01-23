@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
-import {Dimensions, StatusBar} from "react-native";
-import {ISize} from "../types/types";
+import {useEffect, useState} from 'react';
+import {Dimensions, StatusBar} from 'react-native';
+import {ISize} from '../types/types';
 
-const SCREEN = Dimensions.get("screen");
+const SCREEN = Dimensions.get('screen');
 const WIDTH = SCREEN.width;
 const HEIGHT = SCREEN.height - (StatusBar.currentHeight || 0);
 

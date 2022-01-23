@@ -59,7 +59,7 @@ function TemplateItem({item, isFirstItem}: IItemTemplate) {
           <View style={styles.leftSide}>
             <Image
               source={item.image as ImageSourcePropType}
-              width={WIDTH * 0.3}
+              style={{width: WIDTH * 0.3, height: WIDTH * 0.3 * 1.23}}
             />
           </View>
           <View style={styles.rightSide}>

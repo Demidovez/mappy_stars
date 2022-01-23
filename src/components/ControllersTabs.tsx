@@ -1,19 +1,21 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
-import {StyleSheet, Animated} from "react-native";
-import {IController, ISize} from "../types/types";
-import ControllersTabContents from "./ControllersTabContents";
-import ControllersTabLabels from "./ControllersTabLabels";
+import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {StyleSheet, Animated} from 'react-native';
+import useLayoutSize from '../hooks/useLayoutSize';
+import {IController} from '../types/types';
+import ControllersTabContents from './ControllersTabContents';
+import ControllersTabLabels from './ControllersTabLabels';
 
 interface IControllersTab {
   controllers: IController[];
-  layoutSize: ISize;
 }
 
-function ContollersTabs({controllers, layoutSize}: IControllersTab) {
+function ContollersTabs({controllers}: IControllersTab) {
   // console.log("ContollersTabs");
 
   const animOpacity = useRef(new Animated.Value(0)).current;
   const [activeKey, setActiveKey] = useState(controllers[0]?.key);
+
+  const [_, layoutSizeTabs] = useLayoutSize();
 
   // Изменяем значение прозрачности табов
   useEffect(() => {
@@ -26,8 +28,11 @@ function ContollersTabs({controllers, layoutSize}: IControllersTab) {
 
   // Стиль контейнера
   const styleContainer = useMemo(
-    () => [styles.container, {height: layoutSize.height, opacity: animOpacity}],
-    [layoutSize, animOpacity],
+    () => [
+      styles.container,
+      {height: layoutSizeTabs.height, opacity: animOpacity},
+    ],
+    [layoutSizeTabs, animOpacity],
   );
 
   return (
@@ -46,6 +51,6 @@ export default React.memo(ContollersTabs);
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
   },
 });

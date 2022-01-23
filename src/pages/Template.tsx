@@ -1,15 +1,14 @@
-import React, {useEffect, useMemo, useState} from "react";
-import {StyleSheet, View} from "react-native";
-import ControllersTabs from "../components/ControllersTabs";
-import {useAppDispatch, useAppSelector} from "../hooks";
-import {IController, TemplateComponents} from "../types/types";
-import {Routes} from "../navigation/routes";
-import {TAnothersStackScreenProps} from "../navigation/anothersNavigator";
-import {Selectors} from "../redux/selectors/selectors";
-import Delay from "../components/Delay";
-import ArrowBack from "../components/ArrowBack";
-import useLayoutSize from "../hooks/useLayoutSize";
-import initTemplate from "../helper/initTemplate";
+import React, {useEffect, useMemo, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import ControllersTabs from '../components/ControllersTabs';
+import {useAppDispatch, useAppSelector} from '../hooks';
+import {IController, TemplateComponents} from '../types/types';
+import {Routes} from '../navigation/routes';
+import {TAnothersStackScreenProps} from '../navigation/anothersNavigator';
+import {Selectors} from '../redux/selectors/selectors';
+import Delay from '../components/Delay';
+import ArrowBack from '../components/ArrowBack';
+import initTemplate from '../helper/initTemplate';
 
 function Template(props: TAnothersStackScreenProps<Routes.Template>) {
   // console.log("Template");
@@ -20,7 +19,6 @@ function Template(props: TAnothersStackScreenProps<Routes.Template>) {
   const allControllers = useAppSelector(Selectors.getControllers);
 
   const [controllers, setControllers] = useState<IController[]>([]);
-  const [_, layoutSizeTabs] = useLayoutSize();
 
   // Определяем текущий шаблон
   useEffect(() => {
@@ -65,10 +63,7 @@ function Template(props: TAnothersStackScreenProps<Routes.Template>) {
           <Template />
         </Delay>
         {controllers.length > 0 && (
-          <ControllersTabs
-            layoutSize={layoutSizeTabs}
-            controllers={controllers}
-          />
+          <ControllersTabs controllers={controllers} />
         )}
       </View>
     </View>

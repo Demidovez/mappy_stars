@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
-import {useAppSelector} from ".";
-import {Selectors} from "../redux/selectors/selectors";
-import {ISize} from "../types/types";
-import useLayoutSize from "./useLayoutSize";
+import {useEffect, useState} from 'react';
+import {useAppSelector} from '.';
+import {Selectors} from '../redux/selectors/selectors';
+import {ISize} from '../types/types';
+import useLayoutSize from './useLayoutSize';
 
 // Пропорционально уменьшаем размеры превью, при изменение холста (если неполный размер шаблона)
 export default function usePreviewSize(): ISize {
